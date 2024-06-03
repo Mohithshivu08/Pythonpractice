@@ -3,7 +3,91 @@ import nt
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import random
+import datetime
+import math
+import json
+import re
+import os
+#regular expression
+
+txt = "The rain in Spain"
+
+#Find all lower case characters alphabetically between "a" and "m":
+
+x = re.findall("[a-m]", txt)
+print(x)
+
+
+#Search for a sequence that starts with "he", followed excactly 2 (any) characters, and an "o":
+
+x = re.findall("he.{2}o", txt)
+
+print(x)
+txt = "The rain in Spain"
+
+#Check if the string has other characters than a, r, or n:
+
+x = re.findall("[^arn]", txt)
+
+print(x)
+
+if x:
+  print("Yes, there is at least one match!")
+else:
+  print("No match")
+# some JSON:
+x =  '{ "name":"John", "age":30, "city":"New York"}'
+
+# parse x:
+y = json.loads(x)
+
+# the result is a Python dictionary:
+print(y["age"])
+print(type(y))
+
+
+# a Python object (dict):
+x = {
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
+
+# convert into JSON:
+y = json.dumps(x, indent=4)
+
+# the result is a JSON string:
+print(y)
+x = datetime.datetime.now()
+print(x)
+
+
 val = "global"
+class sample:
+    def __init__(self, a , b):
+        self.a = a
+        self.b = b
+
+print(sample(33, 44).a)
+
+class Person:
+  def __init__(self, fname, lname):
+    self.firstname = fname
+    self.lastname = lname
+
+  def printname(self):
+    print(self.firstname, self.lastname)
+
+#Use the Person class to create an object, and then execute the printname method:
+
+x = Person("John", "Doe")
+x.printname()
+
+class Student(Person):
+  def __init__(self, fname, lname):
+    super().__init__(fname, lname)
+
+print(Student("Raj","Sharma"))
 def learning_27_05_2024():
     #print
     print("Hello, World!")
@@ -364,16 +448,225 @@ def learning_27_05_2024():
 
     (green, yellow, *red) = fruits
 
+
     print(green)
     print(yellow)
     print(red)
 
+    thistuple = ("apple", "banana", "cherry")
+    print(len(thistuple))
+
+    thistuple = ("apple",)
+    print(type(thistuple))
+
+    # NOT a tuple
+    thistuple = ("apple")
+    print(type(thistuple))
+
+    x = ("apple", "banana", "cherry")
+    y = list(x)
+    y[1] = "kiwi"
+    x = tuple(y)
+
+    print(x)
+
+    fruits = ("apple", "mango", "papaya", "pineapple", "cherry")
+
+    (green, *tropic, red) = fruits
+
+    print(green)
+    print(tropic)
+    print(red)
+
+    myset = {"apple", "banana", "cherry"}
+    print(type(myset))
+
+    set1 = {"a", "b", "c"}
+    set2 = {1, 2, 3}
+
+    set3 = set1 | set2
+    print(set3)
+
+    thisset = set(("apple", "banana", "cherry"))  # note the double round-brackets
+    print(thisset)
+
+    thisset = {"apple", "banana", "cherry"}
+    tropical = {"pineapple", "mango", "papaya"}
+
+    thisset.update(tropical)
+
+    print(thisset)
+
+    #update list to set
+    thisset = {"apple", "banana", "cherry"}
+    mylist = ["kiwi", "orange"]
+
+    thisset.update(mylist)
+
+    print(thisset)
+
+    thisset = {"apple", "banana", "cherry"}
+
+    thisset.remove("banana")
+
+    print(thisset)
+
+    thisset = {'a', 'b', 'c'}
+    thisset.remove('a')
+    print(thisset)
+    thisset.pop()
+    print(thisset)
+
+    a = {'a', 'b', 'c'}
+    b = {'c', 'd', 'e', 'a'}
+
+    print(a | b)
+    print(a & b)
+    print(a - b)
+    print(a ^ b)
+
+
+   #dictinary
+
+    thisdict = {
+        "brand": "Ford",
+        "model": "Mustang",
+        "year": 1964
+    }
+    print(thisdict)
+    print(thisdict.keys())
+    print(thisdict.values())
+    print(thisdict.items())
+    thisdict['year'] = 1998
+    print(thisdict)
+    #thisdict.pop('year')
+    del thisdict['year']
+    print(thisdict)
+
+    thisdict.popitem()
+    print(thisdict)
+
+    thisdict = {
+        "brand": "Ford",
+        "model": "Mustang",
+        "year": 1964
+    }
+    mydict = dict(thisdict)
+    print(mydict)
+
+    child1 = {
+        "name": "Emil",
+        "year": 2004
+    }
+    child2 = {
+        "name": "Tobias",
+        "year": 2007
+    }
+    child3 = {
+        "name": "Linus",
+        "year": 2011
+    }
+
+    myfamily = {
+        "child1": child1,
+        "child2": child2,
+        "child3": child3
+    }
+
+    print(myfamily["child1"]["name"])
+
+    for x, obj in myfamily.items():
+        print(x)
+
+        for y in obj:
+            print(y + ':', obj[y])
+
+    x = lambda x : x+10
+    print(x(3))
+
+    def myfunc(n):
+        return lambda a: a * n
+
+    mytripler = myfunc(3)
+
+    print(mytripler(11))
+
+    class Vehicle:
+        def __init__(self, brand, model):
+            self.brand = brand
+            self.model = model
+
+        def move(self):
+            print("Move!")
+
+    class Car(Vehicle):
+        pass
+
+    class Boat(Vehicle):
+        def move(self):
+            print("Sail!")
+
+    class Plane(Vehicle):
+        def move(self):
+            print("Fly!")
+
+    car1 = Car("Ford", "Mustang")  # Create a Car object
+    boat1 = Boat("Ibiza", "Touring 20")  # Create a Boat object
+    plane1 = Plane("Boeing", "747")  # Create a Plane object
+
+    for x in (car1, boat1, plane1):
+        print(x.brand)
+        print(x.model)
+        x.move()
+
+    x = min(5, 10, 25)
+    y = max(5, 10, 25)
+
+    print(x)
+    print(y)
+    x = math.sqrt(64)
+
+    print(x)
+    x = math.ceil(1.4)
+    y = math.floor(1.4)
+
+    print(x)  # returns 2
+    print(y)  # returns 1
+    print(math.sqrt(4))
     """
     this is multi line comments
     """
 
 learning_27_05_2024()
-print(val)
-print(globe)
+#print(val)
+#print(globe)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+#File operations
+f = open("C:/Users/Mohith/Documents/Sample.txt","rt")
+for line in f:
+    print(line)
+f.close()
+f = open("C:/Users/Mohith/Documents/Sample.txt","at")
+f.write("\nThis is the newley added line")
+f.close()
+
+f = open("C:/Users/Mohith/Documents/Sample.txt","rt")
+for line in f:
+    print(line)
+f.close()
+f = open("C:/Users/Mohith/Documents/Sample.txt","wt")
+f.write("\nThis is the newley added line")
+f.close()
+
+f = open("C:/Users/Mohith/Documents/Sample.txt","rt")
+for line in f:
+    print(line)
+f.close()
+
+
+
+
+
+
+os.rmdir("C:/Users/Mohith/Documents/demo")
