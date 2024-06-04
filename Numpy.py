@@ -308,3 +308,210 @@ newarr = arr[filter_arr]
 
 print(filter_arr)
 print(newarr)
+
+from numpy import random
+x=random.randint(100, size=(5))
+
+print(x)
+
+x = random.randint(100, size=(3, 5))
+
+print(x)
+
+x = random.rand(5)
+
+print(x)
+
+x = random.rand(3, 5)
+
+print(x)
+
+x = random.choice([3, 5, 7, 9])
+
+print(x)
+
+x = random.choice([3, 5, 7, 9], size=(3, 5))
+
+print(x)
+
+x = random.choice([1,2,3,4,5], p=[0.1, 0.5, 0.3, 0.1, 0.0], size = (3,5))
+
+print(x)
+
+arr = np.array([1, 2, 3, 4, 5])
+
+random.shuffle(arr)
+
+print(arr)
+
+arr = np.array([1, 2, 3, 4, 5])
+
+print(random.permutation(arr))
+
+import matplotlib.pyplot as plt
+
+import seaborn as sb
+
+#sb.distplot([1,2,3,4,5,6], hist=alse)
+
+#plt.show()
+
+#normal deviaion
+
+x = random.normal(size=(2, 3))
+
+print(x)
+x = random.normal(loc=1, scale=2, size=(2, 3))
+
+print(x)
+
+#sb.distplot(random.normal(size = 1000), hist = False)
+
+#plt.show()
+
+x = random.binomial(n=10, p=0.5, size=10)
+#sb.distplot(random.binomial(n=10, p=0.5, size=1000), hist = True, kde = False)
+print(x)
+
+#plt.show()
+
+#sb.distplot(random.normal(loc=50, scale=5, size=1000), hist=False, label='normal')
+#sb.distplot(random.binomial(n=100, p=0.5, size=1000), hist=False, label='binomial')
+
+#sb.distplot(random.poisson(lam=2, size=1000), kde=False)
+#print(random.poisson(lam=2, size=1000))
+#plt.show()
+"""sb.distplot(random.uniform(size=1000), hist=False)
+sb.distplot(random.logistic(size=1000), hist=False)
+sb.distplot(random.exponential(size=1000), hist=False)
+sb.distplot(random.chisquare(df=1, size=1000), hist=False)
+
+sb.distplot(random.rayleigh(size=1000), hist=False)
+sb.distplot(random.pareto(a=2, size=1000), kde=False)
+sb.distplot(x[x<10], kde=False)
+
+#plt.show()
+plt.show()"""
+
+
+#ufunc
+
+x = [1, 2, 3, 4]
+y = [4, 5, 6, 7]
+z = np.add(x, y)
+
+print(z)
+
+def myadd(x, y):
+  return x+y
+
+myadd = np.frompyfunc(myadd, 2, 1)
+
+print(myadd([1, 2, 3, 4], [5, 6, 7, 8]))
+
+arr = np.array([-1, -2, 1, 2, 3, -4])
+
+newarr = np.absolute(arr)
+
+print(newarr)
+
+arr = np.trunc([-3.1666, 3.6667])
+
+print(arr)
+
+arr = np.fix([-3.1666, 3.6667])
+
+print(arr)
+
+arr = np.around(3.1666, 2)
+
+print(arr)
+
+arr = np.floor([-3.1666, 3.6667])
+
+print(arr)
+
+arr = np.ceil([-3.1666, 3.6667])
+
+print(arr)
+
+arr = np.arange(1, 10)
+
+print(np.log2(arr))
+
+arr = np.arange(1, 10)
+
+print(np.log10(arr))
+
+arr = np.arange(1, 10)
+
+print(np.log(arr))
+
+#nplog = np.frompyfunc(log, 2, 1)
+
+#print(nplog(100, 15))
+
+
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([1, 2, 3])
+
+newarr = np.sum([arr1, arr2])
+
+print(newarr)
+
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([1, 2, 3])
+
+newarr = np.sum([arr1, arr2], axis=1)
+
+print(newarr)
+
+print(np.lcm(4,8))
+print(np.lcm.reduce([2,4,8,16,20]))
+
+print(np.gcd(4,8))
+print(np.gcd.reduce([2,4,8,16,20]))
+#plt.show()
+
+arr = np.array([np.pi/2, np.pi/3, np.pi/4, np.pi/5])
+
+x = np.sin(arr)
+
+print(x)
+
+arr = np.array([90, 180, 270, 360])
+
+x = np.deg2rad(arr)
+
+print(x)
+
+arr = np.array([np.pi/2, np.pi, 1.5*np.pi, 2*np.pi])
+
+x = np.rad2deg(arr)
+
+print(x)
+
+x = np.arcsin(1.0)
+
+print(x)
+
+x = np.sinh(np.pi/2)
+
+print(x)
+
+x = np.arcsinh(1.0)
+
+print(x)
+
+arr = np.array([0.1, 0.2, 0.5])
+
+x = np.arctanh(arr)
+
+print(x)
+
+#set operation
+arr = np.array([1, 1, 1, 2, 3, 4, 5, 5, 6, 7])
+
+x = np.unique(arr)
+
+print(x)
